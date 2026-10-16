@@ -14,7 +14,7 @@ import br.edu.ifpe.dominio.model.Usuario;
  */
 public class UsuarioRepository {
     
-    private static List<Usuario> usuarios = new ArrayList();
+    private static List<Usuario> usuarios = new ArrayList<>();
     
     public static void create(Usuario u){
         usuarios.add(u);
