@@ -46,4 +46,13 @@ public class UsuarioRepository {
     public static List<Usuario> readAll(){
         return usuarios;
     }
+    
+    public static Usuario readElementsByEmail(String email) {
+        for(Usuario usuario : usuarios){
+            if(usuario.getCpf().equals(email)){
+                return usuario;
+            }
+        }
+        return null;
+    }
 }

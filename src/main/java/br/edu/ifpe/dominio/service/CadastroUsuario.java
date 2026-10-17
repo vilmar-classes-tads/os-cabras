@@ -6,6 +6,7 @@ package br.edu.ifpe.dominio.service;
 
 import br.edu.ifpe.dominio.model.Usuario;
 import br.edu.ifpe.dominio.model.repository.UsuarioRepository;
+//import br.edu.ifpe.dominio.service.ValidadorCadastroUsuario; //deverá sem implementado depois
 import java.util.Scanner;
 import java.util.List;
 import java.util.ArrayList;
