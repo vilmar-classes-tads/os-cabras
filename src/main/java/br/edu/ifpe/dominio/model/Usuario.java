@@ -3,27 +3,24 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package br.edu.ifpe.dominio.model;
+
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-//import java.util.ArrayList;
 
-/**
- *
- * @author Educação
- */
 public class Usuario {
+
     private String nomeCompleto;
     private String cpf;
     private String email;
     private String senha;
     private String campus;
-    
+
     private List<String> titulacoes;
     private List<String> areasFormacao;
     private Set<Perfil> perfis;
-    
-    //opcionais
+
+    // Opcionais
     private String nomeSocial;
     private String sexo;
     private String linkLattes;
@@ -36,7 +33,7 @@ public class Usuario {
 
     public Usuario() {
         perfis = new HashSet<>();
-    }
+    }  
 
     public String getNomeCompleto() {
         return nomeCompleto;
@@ -133,5 +130,4 @@ public class Usuario {
     public void setTelefone(String telefone) {
         this.telefone = telefone;
     }
-
 }
