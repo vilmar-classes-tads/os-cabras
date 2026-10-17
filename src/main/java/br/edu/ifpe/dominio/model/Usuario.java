@@ -25,7 +25,7 @@ public class Usuario {
     private String sexo;
     private String linkLattes;
     private String telefone;
-
+    
     public enum Perfil {
         ROLE_COORDENADOR,
         ROLE_AVALIADOR
@@ -33,7 +33,7 @@ public class Usuario {
 
     public Usuario() {
         perfis = new HashSet<>();
-    }
+    }  
 
     public String getNomeCompleto() {
         return nomeCompleto;

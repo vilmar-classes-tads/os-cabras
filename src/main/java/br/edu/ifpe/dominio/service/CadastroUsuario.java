@@ -106,6 +106,14 @@ public class CadastroUsuario {
         usuario.setLinkLattes(linkLattes);
         usuario.setTelefone(telefone);
         
+        //adicionando perfis:
+        usuario.getPerfis().add(Usuario.Perfil.ROLE_AVALIADOR);
+        usuario.getPerfis().add(Usuario.Perfil.ROLE_COORDENADOR);
+        
+        
+        //Aidicionando Usuario
+        UsuarioRepository.create(usuario);
+        
         System.out.println("=== Fim do cadastro ===");
     }
 }
