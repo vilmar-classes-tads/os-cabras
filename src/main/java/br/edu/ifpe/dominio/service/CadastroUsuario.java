@@ -6,7 +6,7 @@ package br.edu.ifpe.dominio.service;
 
 import br.edu.ifpe.dominio.model.Usuario;
 import br.edu.ifpe.dominio.model.repository.UsuarioRepository;
-//import br.edu.ifpe.dominio.service.ValidadorCadastroUsuario; //deverá sem implementado depois
+import br.edu.ifpe.dominio.service.ValidadorCadastroUsuario;
 import java.util.Scanner;
 import java.util.List;
 import java.util.ArrayList;
@@ -22,58 +22,130 @@ public class CadastroUsuario {
     public void cadastrar() {
 
         System.out.println("=== Formulario de Cadastro Usuario ===\n");
-
+        String nomeCompleto;
+        String cpf;
+        String email;
+        String senha;
+        String campus;
+        List<String> areasFormacao = new ArrayList<>();
+        List<String> titulacoes = new ArrayList<>();
+        
+        
         //nome
-        System.out.print("Nome completo: \n");
-        String nomeCompleto = scanner.nextLine();
+        while(true) {
+        	System.out.print("Nome completo: \n");
+            nomeCompleto = scanner.nextLine();
+            
+            
+            if(ValidadorCadastroUsuario.verificarCampoObrigatorio(nomeCompleto)) {
+            	break;
+            }
+            
+        }
+        
+        while(true) {
+        	
+        	//cpf
+            System.out.print("\ndigite o cpf - somente numeros: ");
+            cpf = scanner.nextLine();
+            
+            if(ValidadorCadastroUsuario.verificarCPF(cpf)) {
+            	break;
+            }else {
+            	System.out.println("CPF errado, tente novamente. ");
+            }
+        	
+        }
+        
+        while(true) {
+        	//email
+            System.out.print("\ninsira o email: ");
+            email = scanner.nextLine();
+            
+            if(ValidadorCadastroUsuario.verificarEmail(email)) {
+            	break;
+            }else {
+            	System.out.println("email inválido. ");
+            }
+        }
 
-        //cpf
-        System.out.print("\ndigite o cpf - somente numeros: ");
-        String cpf = scanner.nextLine();
+        
+        while(true) {
+        	//senha
+            System.out.print("\ninsira senha: ");
+            senha = scanner.nextLine();
+            
+            if(ValidadorCadastroUsuario.verificarSenha(senha)) {
+            	break;
+            }else {
+            	System.out.println("senha deve ter, no mínimo, 6 dígitos. ");
+            }
+        }
 
-        //email
-        System.out.print("\ninsira o email: ");
-        String email = scanner.nextLine();
+        
+        while(true) {
+        	//campus
+            System.out.print("\nQual o campus: ");
+            campus = scanner.nextLine();
+            
+            if(ValidadorCadastroUsuario.verificarCampoObrigatorio(campus)) {
+            	break;
+            }else {
+            	System.out.println("insira um campus. ");
+            }
+        }
+        
 
-        //senha
-        System.out.print("\ninsira senha: ");
-        String senha = scanner.nextLine();
-
-        //campus
-        System.out.print("\nQual o campus: ");
-        String campus = scanner.nextLine();
+        
 
         //areas formacao
-        List<String> areasFormacao = new ArrayList<>();
+        
 
         System.out.println("\nDigite suas áreas de formação.");
-        System.out.println(" Digite '-' quando terminar.");
+        System.out.println("Digite '-' quando terminar.");
 
         while (true) {
-            System.out.print("Area: ");
+            System.out.print("Área: ");
             String area = scanner.nextLine();
 
             if (area.equalsIgnoreCase("-")) {
+                if (areasFormacao.isEmpty()) {
+                    System.out.println("Informe pelo menos uma área de formação.");
+                    continue;
+                }
                 break;
             }
 
-            areasFormacao.add(area);
+            if (ValidadorCadastroUsuario.verificarCampoObrigatorio(area)) {
+                areasFormacao.add(area);
+            } else {
+                System.out.println("A área de formação não pode ficar vazia.");
+            }
         }
 
-        List<String> titulacoes = new ArrayList<>();
+        
+        //titulações
 
         System.out.println("\nTitulações.");
-        System.out.println(" Digite '-' para terminar.\n");
+        System.out.println("Digite '-' para terminar.\n");
 
         while (true) {
             System.out.print("Titulação: ");
             String titulacao = scanner.nextLine();
 
             if (titulacao.equalsIgnoreCase("-")) {
+                if (titulacoes.isEmpty()) {
+                    System.out.println("Informe pelo menos uma titulação.");
+                    continue;
+                }
                 break;
             }
 
-            titulacoes.add(titulacao);
+            if (ValidadorCadastroUsuario.verificarCampoObrigatorio(titulacao)) {
+                titulacoes.add(titulacao);
+            } else {
+                System.out.println("A titulação não pode ficar vazia.");
+            }
         }
 
         // Nome social

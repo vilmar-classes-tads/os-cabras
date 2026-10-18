@@ -8,14 +8,12 @@ public class ValidadorCadastroUsuario {
 
 	//cpf
 	public static boolean verificarCPF(String cpf) {
-        if (cpf == null) {
+       
+		//verifica usuário escreveu a entrada
+		if (cpf == null) {
             return false;
         }
-        
-        //verifica se já existe
-        if(UsuarioRepository.read(cpf) == null) {
-        	return false;
-        }
+             
 
         // Aceita CPF com ou sem pontuação.
         cpf = cpf.replace(".", "").replace("-", "");
@@ -40,8 +38,15 @@ public class ValidadorCadastroUsuario {
         // Calcula e verifica o segundo dígito.
         int segundoDigito = calcularDigito(cpf, 10);
 
-        return segundoDigito
-                == Character.getNumericValue(cpf.charAt(10));
+        if (segundoDigito != Character.getNumericValue(cpf.charAt(10))) {
+        	return false;
+        }
+        
+      //verifica se já existe
+        return (UsuarioRepository.read(cpf) == null);
+        	
+        
+        
     }
 
     private static int calcularDigito(String cpf, int quantidade) {
@@ -90,7 +95,12 @@ public class ValidadorCadastroUsuario {
     
     
     public static boolean verificarCampoObrigatorio(String valor) {
-        return valor != null && !valor.isBlank();
+        
+    	if(valor != null && !valor.isBlank()) {
+    		System.out.println("campo obrigatório, tente novamente.");
+    		return true;
+    	} else {return false;}
+        
     }
     
 }
