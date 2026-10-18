@@ -170,7 +170,7 @@ public class CadastroUsuario {
         usuario.setNomeCompleto(nomeCompleto);
         usuario.setCpf(cpf);
         usuario.setEmail(email);
-        usuario.setSenha(senha);
+        usuario.setSenha(CriptografiaSenha.gerarHash(senha));
         usuario.setCampus(campus);
         usuario.setAreasFormacao(areasFormacao);
         usuario.setTitulacoes(titulacoes);
