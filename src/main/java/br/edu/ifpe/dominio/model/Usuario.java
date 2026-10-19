@@ -12,7 +12,7 @@ import java.util.Set;
  *
  * @author Educação
  */
-public class Usuario {
+public class Usuaro {
     private String nomeCompleto;
     private String cpf;
     private String email;
