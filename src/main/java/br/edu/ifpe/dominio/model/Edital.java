@@ -8,6 +8,7 @@ public class Edital {
 
 	private String titulo;
 	private int numero;
+	private int ano;
 	
 	private LocalDate dataInicioSubmissao;
 	private LocalDate dataFimSubmissao;
@@ -26,6 +27,12 @@ public class Edital {
 	}
 	public void setNumero(int numero) {
 		this.numero = numero;
+	}
+	public int getAno() {
+		return ano;
+	}
+	public void setAn(int ano) {
+		this.ano = ano;
 	}
 	public LocalDate getDataInicioSubmissao() {
 		return dataInicioSubmissao;
