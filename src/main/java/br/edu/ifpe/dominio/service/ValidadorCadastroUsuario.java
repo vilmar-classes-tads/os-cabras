@@ -70,17 +70,19 @@ public class ValidadorCadastroUsuario {
     		return false;
     	}
     	
-    	if(UsuarioRepository.readElementsByEmail(email) == null) {
-    		return false;
-    	}
+//    	if(UsuarioRepository.readElementsByEmail(email) == null) {
+//    		return false;
+//    	}
     	
-    	String regex = "^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$";
+    	String regex = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$";
     	
-    	if(email.matches(regex)) {
-    		return true;
-    	}else {
-    		return false;
-    	}
+//    	if(email.matches(regex)) {
+//    		return true;
+//    	}else {
+//    		return false;
+//    	}
+
+        return email.matches(regex);
     }
     
     //senha maior que 6 dígitos
