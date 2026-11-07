@@ -99,9 +99,8 @@ public class ValidadorCadastroUsuario {
     public static boolean verificarCampoObrigatorio(String valor) {
         
     	if(valor != null && !valor.isBlank()) {
-    		System.out.println("campo obrigatório, tente novamente.");
     		return true;
-    	} else {return false;}
+    	} else {System.out.println("campo obrigatório, tente novamente."); return false;}
         
     }
     

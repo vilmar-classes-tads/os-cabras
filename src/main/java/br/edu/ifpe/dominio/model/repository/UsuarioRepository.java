@@ -49,7 +49,7 @@ public class UsuarioRepository {
     
     public static Usuario readElementsByEmail(String email) {
         for(Usuario usuario : usuarios){
-            if(usuario.getCpf().equals(email)){
+            if(usuario.getEmail().equals(email)){
                 return usuario;
             }
         }
