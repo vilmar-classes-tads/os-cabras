@@ -6,6 +6,8 @@ import java.util.List;
 
 public class Projeto {
 	
+	private Integer id;
+	
 	private String titulo;
 	private String resumo;
 	private String campus;
@@ -18,11 +20,17 @@ public class Projeto {
 	private StatusProjeto status;
 	
 	
+	public Integer getId() {
+		return id;
+	}
+	public void setId(Integer id) {
+		this.id = id;
+	}
 	public String getTitulo() {
 		return titulo;
 	}
-	public void setTitulo(String titilo) {
-		this.titulo = titilo;
+	public void setTitulo(String titulo) {
+		this.titulo = titulo;
 	}
 	public String getResumo() {
 		return resumo;
@@ -72,5 +80,4 @@ public class Projeto {
 	public void setStatus(StatusProjeto status) {
 		this.status = status;
 	}
-	
 }

@@ -8,15 +8,19 @@ import br.edu.ifpe.dominio.model.Usuario;
 
 public class ProjetoRepository {
 
-private static List<Projeto> projetos = new ArrayList<>();
+
+	private static List<Projeto> projetos = new ArrayList<>();
+	private static int countId = 0;
     
     public static void create(Projeto p){
+    	p.setId(countId);
     	projetos.add(p);
+    	countId ++ ;
     }
     
-    public static Projeto read(String  titulo){
+    public static Projeto read(Integer id){
     	for(Projeto projeto : projetos){
-            if(projeto.getTitulo().equals(titulo)){
+            if(projeto.getId().equals(id)){
                 return projeto;
             }
         }
@@ -31,13 +35,26 @@ private static List<Projeto> projetos = new ArrayList<>();
     	projetos.remove(p);
     }
     
-    public static boolean update(Projeto projeto){
-        for(int i = 0; i < projetos.size(); i++){
-           if(projetos.get(i).getTitulo().equals(projeto.getTitulo())){
-        	   projetos.set(i, projeto);
-               return true;
-           }
-       }
-       return false;
+    public static boolean update(int id, Projeto novosDados) {
+
+        for (int i = 0; i < projetos.size(); i++) {
+
+            Projeto projetoAtual = projetos.get(i);
+
+            if (projetoAtual.getId() == id) {
+
+                projetoAtual.setTitulo(novosDados.getTitulo());
+                projetoAtual.setResumo(novosDados.getResumo());
+                projetoAtual.setPalavrasChave(novosDados.getPalavrasChave());
+                projetoAtual.setPublicoAlvo(novosDados.getPublicoAlvo());
+                projetoAtual.setAreaTematica(novosDados.getAreaTematica());
+                projetoAtual.setCampus(novosDados.getCampus());
+                projetoAtual.setOds(novosDados.getOds());
+
+                return true;
+            }
+        }
+
+        return false;
     }
 }
