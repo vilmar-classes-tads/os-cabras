@@ -30,3 +30,21 @@ jobs:
 
     - name: Construir imagem Docker
       run: docker build -t sistema-editais:latest .
+
+    - name: Testar execucao do container
+      run: |
+        output=$(printf '%s\n' \
+          'Usuario Teste Docker' \
+          '52998224725' \
+          'teste@example.com' \
+          'senha123' \
+          'IFPE Recife' \
+          'Tecnologia da Informacao' \
+          '-' \
+          'Graduacao' \
+          '-' \
+          '' '' '' '' \
+          | docker run --rm -i sistema-editais:latest)
+
+        echo "$output"
+        echo "$output" | grep -q "=== Fim do cadastro ==="
