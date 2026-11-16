@@ -1,9 +1,10 @@
+
 on:
   push:
     branches:
       - main
       - develop
-      - 'feature/**' # Captura qualquer push em branches como feature/issue0, feature/login, etc.
+      - 'feature/**'
   pull_request:
     branches:
       - main
@@ -24,5 +25,8 @@ jobs:
         distribution: 'temurin'
         cache: maven
 
-    - name: Compilar e Executar Testes com o Maven
-      run: mvn clean test # Alterado de compile para test
+    - name: Compilar, testar e empacotar com Maven
+      run: mvn clean package
+
+    - name: Construir imagem Docker
+      run: docker build -t sistema-editais:latest .
